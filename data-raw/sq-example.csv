@@ -1,0 +1,13 @@
+QuestionType;QuestionDescription;QuestionID;Language;QuestionText;ChoiceID;Choices
+MC;sex;Q1;EN;What is your sex?;1;Male
+MC;sex;Q1;EN;What is your sex?;2;Female
+MC;sex;Q1;DE;Was ist ihr Geschlecht?;1;Männlich
+MC;sex;Q1;DE;Was ist ihr Geschlecht?;2;Weiblich
+MC;sex;Q1;FR;Quel est votre sexe ?;1;Homme
+MC;sex;Q1;FR;Quel est votre sexe ?;2;Femme
+MC;born;Q2;EN;Were you born in Germany;1;Yes
+MC;born;Q2;EN;Were you born in Germany;2;No
+MC;born;Q2;DE;Wurden Sie in Deutschland geboren?;1;Ja
+MC;born;Q2;DE;Wurden Sie in Deutschland geboren?;2;Nein
+MC;born;Q2;FR;Êtes-vous né(e) en Allemagne ?;1;Oui
+MC;born;Q2;FR;Êtes-vous né(e) en Allemagne ?;2;Non

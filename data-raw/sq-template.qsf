@@ -1,0 +1,27 @@
+{
+  "SurveyID": "SV_2XU85C4UszfjnUn",
+  "Element": "SQ",
+  "PrimaryAttribute": "Q0",
+  "SecondaryAttribute": "first_question",
+  "TertiaryAttribute": null,
+  "Payload": {
+    "DataExportTag": "Q0",
+    "Configuration": {
+      "QuestionDescriptionOption": "SpecifyLabel"
+    },
+    "QuestionDescription": "first_question",
+    "Validation": {
+      "Settings": {
+        "ForceResponse": "OFF",
+        "ForceResponseType": "ON",
+        "Type": "None"
+      }
+    },
+    "Language": [],
+    "DataVisibility": {
+      "Private": false,
+      "Hidden": false
+    },
+    "QuestionID": "Q0"
+  }
+}

@@ -1,0 +1,117 @@
+---
+title: "using-qsf"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{using-qsf}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(tidyverse)
+library(qsf)
+```
+
+The following examples use a mini survey provided as part of the package. This survey includes two binary choice survey questions in three languages (English, German, and French). To load your own survey file, use the `read_qsf()` function. When the editing process is completed, use the function `write_qsf()` to generate the QSF which is then uploaded to Qualtrics. 
+
+
+# Example 1: View all questions and translations 
+
+```{r, eval = TRUE}
+data(sq_qsf)
+get_questions(sq_qsf)
+```
+
+### Example 2: Add survey question to existing survey 
+
+We construct a new survey question that gets attached to the existing survey. 
+
+```{r, eval = TRUE}
+q <- tibble(
+		QuestionText="How can we contact you?",
+		Choices = list(tibble(
+					id=c(1,2),
+					label=c("Email","SMS"))),
+		Language = "EN"
+		)
+
+sq <- construct_question(q, 
+    question_text=QuestionText, 
+    choices=Choices, 
+    language=Language, 
+    master="EN",  
+    question_id="Q3",
+    primary_attribute="Q3",
+    secondary_attribute="contact",
+    data_export_tag="contact", 
+    question_description="Contact question", 
+    question_type = "MC") 
+```
+
+Next, we attach this new question to the existing mini survey. This requires to first append the survey and then to attach the question to an existing survey block. To identify the ID of a block, we use the `get_block_description()` function.
+  
+```{r, eval = TRUE}
+qsf <- append_survey(sq_qsf,list(sq))
+get_block_description(qsf)
+qsf <- attach_question(qsf, qid="Q3", block_id='BL_npw6udfrvIt9oNT')
+```
+
+
+### Example 3: Allow multiple choice
+
+Continuing the previous example, we wish to allow users to select both Email and SMS as means to be contacted. 
+
+```{r, eval = TRUE}
+qsf <- update_question(qsf, 
+		id_name='SecondaryAttribute', 
+		id='contact', 
+		Selector='MAVR',
+		SubSelector='TX')
+```
+
+
+
+### Example 4: Construct survey from tibble 
+
+
+```{r, eval = TRUE}
+data(sq_df)
+(sq_df)
+```
+
+```{r, eval = TRUE}
+res <- sq_df %>% group_by(QuestionID) %>% 
+	nest(Choices=c(ChoiceID,Choices)) %>% 
+	do(m=construct_question(., 
+				 	question_text=QuestionText, 
+				 	choices=Choices,
+				 	language=Language, 
+				 	master="EN", 
+				 	question_id=unique(.$QuestionID),
+				 	primary_attribute=unique(.$QuestionID),
+				 	secondary_attribute=unique(.$QuestionDescription),
+				 	data_export_tag=unique(.$QuestionID), 
+				 	question_description=unique(.$QuestionDescription), 
+				 	question_type=unique(.$QuestionType) )) 
+```
+
+```{r, eval = TRUE}
+qsf <- create_survey(res$m)
+```
+
+
+### Example 5: Enable survey options 
+
+The next example shows how to prevent ballot box stuffing for a survey.
+
+```{r, eval = TRUE}
+qsf <- update_survey(qsf, 
+	 BallotBoxStuffingPrevention='true')
+```
