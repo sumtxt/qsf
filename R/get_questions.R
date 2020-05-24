@@ -21,9 +21,9 @@
 #' 	}
 #' 
 #' @examples 
-#' data(sq_qsf)
+#' data(svy_qsf)
 #' 
-#' get_questions(sq_qsf)
+#' get_questions(svy_qsf)
 #' 
 #' 
 #' 

@@ -13,13 +13,13 @@ update_question(qsf, id_name, id, ...)
 
 \item{id}{Value of \code{id_name}.}
 
-\item{...}{key-value tubles (see details)}
+\item{...}{key-value tuples (see details)}
 }
 \description{
 Versatile function to change the behavior of a question and the survey.
 }
 \details{
-The list below catalogues some of common keys that control the behavior of a question.  The function accepts all key-value tuples. 
+The list below catalogs some of common keys that control the behavior of a question.  The function accepts all key-value tuples. 
 
 \itemize{
  \item Validation: A list controlling the validation. Use \code{\link{construct_validation()}} to construct. 

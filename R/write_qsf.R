@@ -13,9 +13,9 @@
 #' 
 #' 
 #' @examples 
-#' data(sq_qsf)
+#' data(svy_qsf)
 #' 
-#' write_qsf(sq_qsf, path=tempfile())
+#' write_qsf(svy_qsf, path=tempfile())
 #' 
 #' @export
 write_qsf <- function(qsf, path, ...){

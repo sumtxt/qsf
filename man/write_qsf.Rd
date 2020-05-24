@@ -22,8 +22,8 @@ This function is just a wrapper around \code{\link[jsonlite]{write_json}}.
 Any QSF file is a JSON file.
 }
 \examples{
-data(sq_qsf)
+data(svy_qsf)
 
-write_qsf(sq_qsf, path=tempfile())
+write_qsf(svy_qsf, path=tempfile())
 
 }

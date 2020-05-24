@@ -25,8 +25,7 @@
 #' 
 #' 
 #' @export
-update_survey <- function(qsf, 
-	id_name, id, ...){
+update_survey <- function(qsf, ...){
 	update_question(qsf, id_name='Element', id='SO', ...)
 	}
 

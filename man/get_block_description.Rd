@@ -16,8 +16,8 @@ Returns a \code{tibble} with a row for each survey block, the block id, block de
 Display information on question blocks
 }
 \examples{
-data(sq_qsf)
+data(svy_qsf)
 
-get_block_description(sq_qsf)
+get_block_description(svy_qsf)
 
 }

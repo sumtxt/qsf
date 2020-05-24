@@ -7,9 +7,9 @@
 #' 
 #' 
 #' @examples 
-#' data(sq_qsf)
+#' data(svy_qsf)
 #' 
-#' get_block_description(sq_qsf)
+#' get_block_description(svy_qsf)
 #' 
 #' @export
 get_block_description <- function(qsf){

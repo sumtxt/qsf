@@ -98,7 +98,7 @@ construct_question <- function(df,
 		stop("Argument question_type must be either MC, TE, DB, or Matrix.")
 	}
 
-	sq <- qsf:::sq0
+	sq <- sq0
 
 	if(question_type =="MC"){
 

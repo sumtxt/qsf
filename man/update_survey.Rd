@@ -4,7 +4,7 @@
 \alias{update_survey}
 \title{Update survey settings}
 \usage{
-update_survey(qsf, id_name, id, ...)
+update_survey(qsf, ...)
 }
 \arguments{
 \item{qsf}{qsf file as R list}

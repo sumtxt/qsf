@@ -10,11 +10,12 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  warning = FALSE,
   comment = "#>"
 )
 ```
 
-```{r setup}
+```{r}
 library(tidyverse)
 library(qsf)
 ```
@@ -24,16 +25,16 @@ The following examples use a mini survey provided as part of the package. This s
 
 # Example 1: View all questions and translations 
 
-```{r, eval = TRUE}
-data(sq_qsf)
-get_questions(sq_qsf)
+```{r}
+data(svy_qsf)
+get_questions(svy_qsf)
 ```
 
 ### Example 2: Add survey question to existing survey 
 
 We construct a new survey question that gets attached to the existing survey. 
 
-```{r, eval = TRUE}
+```{r}
 q <- tibble(
 		QuestionText="How can we contact you?",
 		Choices = list(tibble(
@@ -57,8 +58,8 @@ sq <- construct_question(q,
 
 Next, we attach this new question to the existing mini survey. This requires to first append the survey and then to attach the question to an existing survey block. To identify the ID of a block, we use the `get_block_description()` function.
   
-```{r, eval = TRUE}
-qsf <- append_survey(sq_qsf,list(sq))
+```{r}
+qsf <- append_survey(svy_qsf,list(sq))
 get_block_description(qsf)
 qsf <- attach_question(qsf, qid="Q3", block_id='BL_npw6udfrvIt9oNT')
 ```
@@ -68,7 +69,7 @@ qsf <- attach_question(qsf, qid="Q3", block_id='BL_npw6udfrvIt9oNT')
 
 Continuing the previous example, we wish to allow users to select both Email and SMS as means to be contacted. 
 
-```{r, eval = TRUE}
+```{r}
 qsf <- update_question(qsf, 
 		id_name='SecondaryAttribute', 
 		id='contact', 
@@ -81,13 +82,13 @@ qsf <- update_question(qsf,
 ### Example 4: Construct survey from tibble 
 
 
-```{r, eval = TRUE}
-data(sq_df)
-(sq_df)
+```{r}
+data(svy_df)
+(svy_df)
 ```
 
-```{r, eval = TRUE}
-res <- sq_df %>% group_by(QuestionID) %>% 
+```{r}
+res <- svy_df %>% group_by(QuestionID) %>% 
 	nest(Choices=c(ChoiceID,Choices)) %>% 
 	do(m=construct_question(., 
 				 	question_text=QuestionText, 
@@ -102,7 +103,7 @@ res <- sq_df %>% group_by(QuestionID) %>%
 				 	question_type=unique(.$QuestionType) )) 
 ```
 
-```{r, eval = TRUE}
+```{r}
 qsf <- create_survey(res$m)
 ```
 
@@ -111,7 +112,7 @@ qsf <- create_survey(res$m)
 
 The next example shows how to prevent ballot box stuffing for a survey.
 
-```{r, eval = TRUE}
+```{r}
 qsf <- update_survey(qsf, 
 	 BallotBoxStuffingPrevention='true')
 ```

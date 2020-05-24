@@ -2,6 +2,7 @@
 #' @importFrom rlang dots_list exec enquo
 #' @importFrom stringr str_detect
 #' @importFrom tibble tibble as_tibble deframe add_column
+#' @importFrom stats runif
 #' @import dplyr
 #' @import purrr
 NULL

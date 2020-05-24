@@ -33,9 +33,9 @@ Extract questions from QSF file
 This function extracts all questions from a QSF file and can convert those to a \code{data.frame}.
 }
 \examples{
-data(sq_qsf)
+data(svy_qsf)
 
-get_questions(sq_qsf)
+get_questions(svy_qsf)
 
 
 

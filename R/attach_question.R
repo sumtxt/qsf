@@ -45,7 +45,6 @@ attach_question <- function(qsf, block_id, qid, page_break=FALSE){
 	return(qsf)
 	}
 
-#' @export
 detect_index2 <- function(.x, ..., key, value){
 	detect_index( pluck(.x, ...),  
 			 ~ has_key_value(., key=key, value=value) )
