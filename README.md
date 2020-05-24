@@ -2,7 +2,7 @@
 
 Qualtrics Survey File (QSF) editing and construction in R.
 
-A QSF is a `json` file that can is represented in R as a nested list. For an introduction to Qualtrics' QSF files see Christian Testa's [Quickstart Guide to understanding the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241).
+A QSF is a `json` file that is represented in R as a nested list. For an introduction to Qualtrics' QSF files see Christian Testa's [Quickstart Guide to understanding the Qualtrics Survey File](https://gist.github.com/ctesta01/d4255959dace01431fb90618d1e8c241).
 
 
 ### Install 
